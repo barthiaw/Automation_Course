@@ -50,7 +50,7 @@ def submain(args):
         return _interfaces_payload
 
     def send_netconf_payload(host, netconf_payload):
-        with manager.connect(host="csr1kv1",
+        with manager.connect(host=args.host,
                              port=830,
                              username=args.username,
                              password=args.password,
