@@ -28,10 +28,13 @@ def submain(args):
     def print_native_ifoper():
         filter = """
         <interfaces xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper">
+        <interface>
+        <name>GigabitEthernet1</name>
+        </interface>
         </interfaces>
         """
 
-         with manager.connect(
+        with manager.connect(
             host=args.host,
             port=830,
             username=args.username,
@@ -65,6 +68,9 @@ def submain(args):
     def print_openconfig_ifoper():
         filter = """
         <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+        <name>GigabitEthernet1</name>
+        </interface>
         </interfaces>
         """
 
