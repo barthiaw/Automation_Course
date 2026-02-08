@@ -18,7 +18,7 @@ import argparse
 
 import yaml
 from jinja2 import Template
-from ncclient import manager # type: ignore
+from ncclient import manager
 
 
 def submain(args):
@@ -34,22 +34,23 @@ def submain(args):
             yml_file = yaml.load(fh, Loader=yaml.SafeLoader)
 
         return yml_file
-
-    def build_interfaces_payload():
+    
+    def build_routing_policy_payload():
         interfaces = intent.get('interfaces', [])
 
-        with open('task03_create_loopback.j2') as f:
+        with open('task04_routing_policy.j2') as f:
             interface_template = Template(f.read())
 
-        _interfaces_payload = interface_template.render(interfaces=interfaces)
+        _routing_policy_payload = interface_template.render(
+            interfaces=interfaces)
 
-        print("\nInterfaces Payload: \n{}".format(_interfaces_payload))
+        print("\nRouting Policy Payload: \n{}".format(_routing_policy_payload))
         print("\nYANG Model URL: {}\n".format(
-            "https://github.com/YangModels/yang/blob/master/vendor/cisco/xe/1693/openconfig-interfaces.yang"))
+            "https://github.com/YangModels/yang/blob/master/vendor/cisco/xe/1693/openconfig-routing-policy.yang"))
 
-        return _interfaces_payload
+        return _routing_policy_payload
 
-    def send_netconf_payload(host, netconf_payload):
+    def send_netconf_payload(netconf_payload):
         with manager.connect(host=args.host,
                              port=830,
                              username=args.username,
@@ -60,14 +61,14 @@ def submain(args):
                              allow_agent=False) as m:
             netconf_response = m.edit_config(netconf_payload, target='running')
 
-        print("\nSending interface configuration with NETCONF")
+        print("\nSending routing policy configuration with NETCONF")
         print("\nYANG Model URL: {}\n".format(
-            "https://github.com/YangModels/yang/blob/master/vendor/cisco/xe/1693/openconfig-interfaces.yang"))
+            "https://github.com/YangModels/yang/blob/master/vendor/cisco/xe/1693/openconfig-routing-policy.yang"))
 
     intent = get_intent()
 
-    interfaces_payload = build_interfaces_payload()
-    send_netconf_payload(host=args.host, netconf_payload=interfaces_payload)
+    routing_policy_payload = build_routing_policy_payload()
+    send_netconf_payload(netconf_payload=routing_policy_payload)
 
 
 def main():
@@ -85,6 +86,7 @@ def main():
                                 required=False if DEFAULT_INTENT_FILE else True)
 
     args = parser.parse_args()
+
     submain(args)
 
 
