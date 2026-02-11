@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #######################
 # Global Vars
@@ -20,7 +20,7 @@ from collections import defaultdict
 
 import xmltodict
 from jinja2 import Template
-from ncclient import manager
+from ncclient import manager # type: ignore
 
 def main():
     parser = argparse.ArgumentParser()
