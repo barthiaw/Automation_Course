@@ -1,0 +1,7 @@
+Juniper: Also a plant
+Cisco: 6500
+Brocade: true
+VMware:
+  - esxi
+  - vcenter
+  - nsx
