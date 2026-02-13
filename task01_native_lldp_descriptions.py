@@ -20,7 +20,7 @@ from collections import defaultdict
 
 import xmltodict
 from jinja2 import Template
-from ncclient import manager # type: ignore
+from ncclient import manager
 
 def main():
     parser = argparse.ArgumentParser()
@@ -98,7 +98,7 @@ def submain(args):
 
     def map_deviceids_to_interfaces(lldp_neighbors):
         """
-        Returns (dict): { u'Gi4': [{device-id: 'csr1kv2.cisco.com', 'connecting-interface': ''} , ... ] }
+        Returns (dict): { u'Gi4': [{device-id: '10.10.10.52', 'connecting-interface': ''} , ... ] }
         """
         data = defaultdict(list)
 
