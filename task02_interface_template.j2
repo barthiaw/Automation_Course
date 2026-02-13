@@ -8,4 +8,5 @@ interface {{ interface.name }}
         switchport access vlan {{ interface.vlan }}
         switchport mode access
     {% endif %}
+    speed {{ interface.name|get_interface_speed }}
 {% endfor %}
