@@ -98,7 +98,7 @@ def submain(args):
 
     def map_deviceids_to_interfaces(lldp_neighbors):
         """
-        Returns (dict): { u'Gi4': [{device-id: 'csr1kv1.bthiaw.local', 'connecting-interface': ''} , ... ] }
+        Returns (dict): { u'Gi4': [{device-id: 'csr1kv2.bthiaw.local', 'connecting-interface': ''} , ... ] }
         """
         data = defaultdict(list)
 
