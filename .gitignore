@@ -1,3 +1,4 @@
 credentials.yml
 access_info.ini
 .env
+.vault_pass
