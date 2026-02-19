@@ -1,0 +1,8 @@
+---
+- name: Test vault pass
+  hosts: localhost
+
+  tasks:
+    - name: Print username and password from vault
+      debug:
+        msg: "Username: {{ switch_username }}, Password: {{ switch_password }}"
