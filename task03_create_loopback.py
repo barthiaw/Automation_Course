@@ -18,7 +18,7 @@ import argparse
 
 import yaml
 from jinja2 import Template
-from ncclient import manager # type: ignore
+from ncclient import manager
 
 
 def submain(args):
