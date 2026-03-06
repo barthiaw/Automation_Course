@@ -3,7 +3,7 @@ devices:
     os: 'iosxe'
     type: 'router'
     platform: 'Catalyst9000'
-    alias: 'uut'
+    #alias: 'uut'
     connections:
       cli:
         protocol: 'ssh'
@@ -14,4 +14,18 @@ devices:
         username: 'cisco'
         password: 'cisco'
       enable:
+        password: 'Barto79lomeo'
+  SW1_nxos:
+    os: 'nxos'
+    type: 'switch'
+    platform: 'Nexus9000v'
+    alias: 'uut'
+    connections:
+      cli:
+        protocol: 'ssh'
+        ip: '10.10.10.52'
+        port: '22'
+    credentials:
+      default:
+        username: 'admin'
         password: 'Barto79lomeo'
