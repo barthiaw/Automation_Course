@@ -1,0 +1,17 @@
+devices:
+  R1_xe:
+    os: 'iosxe'
+    type: 'router'
+    platform: 'Catalyst9000'
+    alias: 'uut'
+    connections:
+      cli:
+        protocol: 'ssh'
+        ip: '10.0.0.1'
+        port: '22'
+    credentials:
+      default:
+        username: 'cisco'
+        password: 'cisco'
+      enable:
+        password: 'Barto79lomeo'
