@@ -29,7 +29,7 @@ def submain(args):
         filter = """
         <interfaces xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-interfaces-oper">
         <interface>
-        <name>GigabitEthernet1</name>
+        <name>GigabitEthernet0/0</name>
         </interface>
         </interfaces>
         """
@@ -69,7 +69,7 @@ def submain(args):
         filter = """
         <interfaces xmlns="http://openconfig.net/yang/interfaces">
         <interface>
-        <name>GigabitEthernet1</name>
+        <name>GigabitEthernet0/0</name>
         </interface>
         </interfaces>
         """
