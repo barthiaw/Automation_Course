@@ -8,7 +8,7 @@ devices:
   R1:
     connections:
       cli:
-        ip: 172.21.1.21
+        ip: 10.10.10.60
         port: 22
         protocol: ssh
     os: iosxe
@@ -16,7 +16,7 @@ devices:
   R2:
     connections:
       cli:
-        ip: 172.21.1.22
+        ip: 10.10.10.61
         port: 22
         protocol: ssh
     os: iosxe
@@ -24,7 +24,7 @@ devices:
   R3:
     connections:
       cli:
-        ip: 172.21.1.23
+        ip: 10.10.10.62
         port: 22
         protocol: ssh
     os: iosxe
