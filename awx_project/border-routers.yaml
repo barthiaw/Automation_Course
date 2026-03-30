@@ -5,7 +5,7 @@
 
   tasks:
     - name: OSPF
-      ios_ospfv2:
+      cisco.ios.ios_ospfv2:
         config:
           processes:
             - process_id: 1
@@ -15,7 +15,7 @@
                   area: 0
 
     - name: ACL
-      ios_acls:
+      cisco.ios.ios_acls:
         state: replaced
         config:
           - afi: ipv4
@@ -42,7 +42,7 @@
                       set: true
     
     - name: Apply ACL inbound
-      ios_acl_interfaces:
+      cisco.ios.ios_acl_interfaces:
         config:
           - name: Ethernet0/3
             access_groups:
@@ -52,5 +52,5 @@
                     direction: in
 
     - name: Write config-run
-      ios_config:
+      cisco.ios.ios_config:
         save_when: modified
