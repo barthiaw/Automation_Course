@@ -1,0 +1,21 @@
+---
+- name: Playbook - Task 2.3
+  hosts: switches
+  gather_facts: no
+
+  tasks:
+    - name: "Create Vlans on Switches"
+      ios_vlans:
+        config:
+          - vlan_id: 10
+            name: Printer
+          - vlan_id: 20
+            name: Camera
+          - vlan_id: 30
+            name: Guest
+        state: overridden   
+
+    - name: "Save to startup-config"
+      ios_config:
+        save_when: modified
+
