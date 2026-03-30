@@ -1,0 +1,58 @@
+---
+- name: "Layer-2 interfaces"
+  hosts: switches
+  gather_facts: no
+
+  tasks:
+    - name: Switchport VLANs
+      ios_l2_interfaces:
+        config:
+          - name: Ethernet0/1
+            access:
+              vlan: 10
+          - name: Ethernet0/2
+            trunk:
+              encapsulation: dot1q
+              allowed_vlans: 10,20,30
+          - name: Ethernet0/3
+            trunk:
+              encapsulation: dot1q
+              allowed_vlans: 10,20,30
+              
+    - name: Switchport modes
+      ios_l2_interfaces:
+        config:
+          - name: Ethernet0/1
+            mode: access
+          - name: Ethernet0/2
+            mode: trunk
+          - name: Ethernet0/3
+            mode: trunk
+       
+        #state: rendered
+      #register: output
+    #- name: Debug
+    #  debug:
+    #    var: output
+
+- name: "Layer-3 interfaces"
+  hosts: routers
+  gather_facts: no
+
+  tasks:
+    - name: IP Address
+      ios_l3_interfaces:
+        config:
+          - name: Ethernet0/1
+            ipv4:
+              - address: "{{ ipaddr }}"
+
+    - name: Admin state
+      ios_interfaces:
+        config:
+          - name: "{{ item }}"
+            enabled: true
+      loop:
+        - Ethernet0/1
+        - Ethernet0/2
+        - Ethernet0/3
